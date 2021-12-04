@@ -37,7 +37,6 @@
             bool findFirst = false; // true;
 
             var winningBoards = new Dictionary<int[], bool>();
-
             boards.ForEach(b => winningBoards.Add(b, false));
 
             foreach (var number in numbers)
@@ -46,10 +45,7 @@
                 {
                     if ((Array.IndexOf(board, number) is var index) && index > -1)
                     {
-                        if (board[index] >=0)
-                        {
-                            board[index] = -1; 
-                        }
+                        board[index] = -1; 
 
                         if (CheckBoard(board, index))
                         {
