@@ -19,5 +19,6 @@ await puzzle.AssertAsync();
 var result = await puzzle.CalculateAsync();
 
 Console.WriteLine($"Result: {result}");
+ClipboardService.SetText(result);
 
 return 0;
