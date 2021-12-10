@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net;
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 namespace AdventOfCode
 {
@@ -11,8 +9,6 @@ namespace AdventOfCode
         protected abstract string SampleResult { get; }
 
         protected abstract Task<string> GetSampleInputAsync();
-
-        protected abstract Task<string> GetCheckInputAsync();
 
         protected abstract string DoCalculation(string input);
 
@@ -33,6 +29,38 @@ namespace AdventOfCode
             {
                 Debugger.Break();
                 throw new InvalidOperationException($"Assertion failed! Current result: {result}, expected: {SampleResult}");
+            }
+        }
+
+        protected virtual async Task<string> GetCheckInputAsync()
+        {
+            var dayMatch = Regex.Match(GetType().FullName, ".Day([0-9][0-9]).");
+
+            if (!dayMatch.Success)
+            {
+                throw new InvalidOperationException("Invalid namespace used");
+            }
+
+            var day = int.Parse(dayMatch.Groups[1].Value);
+            var filename = $"Day{day:D02}\\input.txt";
+
+            if (!File.Exists(filename))
+            {
+                var session = await File.ReadAllTextAsync(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".AoC.cookie"));
+                using var client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Cookie", $"session={session.Trim()}");
+                using var response = await client.GetAsync($"https://adventofcode.com/2021/day/{day}/input");
+                response.EnsureSuccessStatusCode();
+
+                var content = (await response.Content.ReadAsStringAsync()).Replace("\n", Environment.NewLine);
+                Directory.CreateDirectory(Path.GetDirectoryName(filename));
+                await File.WriteAllTextAsync(filename, content);
+
+                return content;
+            }
+            else
+            {
+                return await File.ReadAllTextAsync(filename);
             }
         }
     }

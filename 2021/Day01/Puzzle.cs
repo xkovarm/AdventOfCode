@@ -15,11 +15,6 @@
             return File.ReadAllTextAsync(@"Day01\sample.txt");
         }
 
-        protected override Task<string> GetCheckInputAsync()
-        {
-            return File.ReadAllTextAsync(@"Day01\input.txt");
-        }
-
         protected override string DoCalculation(string input)
         {
             var values = input.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();

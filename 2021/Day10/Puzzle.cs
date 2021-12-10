@@ -28,11 +28,6 @@
             ['<'] = 4
         };
 
-        protected override Task<string> GetCheckInputAsync()
-        {
-            return File.ReadAllTextAsync(@"Day10\input.txt");
-        }
-
         protected override Task<string> GetSampleInputAsync()
         {
             return Task.FromResult(@"[({(<(())[]>[[{[]{<()<>>

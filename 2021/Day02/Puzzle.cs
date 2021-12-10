@@ -26,11 +26,6 @@ namespace AdventOfCode.Day02
             return Solution2(path);
         }
 
-        protected override Task<string> GetCheckInputAsync()
-        {
-            return File.ReadAllTextAsync(@"Day02\input.txt");
-        }
-
         protected override Task<string> GetSampleInputAsync()
         {
             return Task.FromResult(@"

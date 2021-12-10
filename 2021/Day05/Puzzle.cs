@@ -58,11 +58,6 @@
             return count.ToString();            
         }    
 
-        protected override Task<string> GetCheckInputAsync()
-        {
-            return File.ReadAllTextAsync(@"Day05\input.txt");
-        }
-
         protected override Task<string> GetSampleInputAsync()
         {
             return Task.FromResult(@"0,9 -> 5,9

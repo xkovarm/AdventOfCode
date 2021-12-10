@@ -10,11 +10,6 @@ namespace AdventOfCode.Day09
     {
         protected override string SampleResult => "1134"; // "15";
 
-        protected override Task<string> GetCheckInputAsync()
-        {
-            return File.ReadAllTextAsync(@"Day09\input.txt");
-        }
-
         protected override Task<string> GetSampleInputAsync()
         {
             return Task.FromResult(@"2199943210

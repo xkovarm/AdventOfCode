@@ -21,4 +21,7 @@ var result = await puzzle.CalculateAsync();
 Console.WriteLine($"Result: {result}");
 ClipboardService.SetText(result);
 
+Console.WriteLine($"Press any key...");
+Console.ReadKey();
+
 return 0;

@@ -11,11 +11,6 @@
             Debug.Assert(DoCalculation("acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab | cdfeb fcadb cdfeb cdbaf") == "5353");
         }
 
-        protected override Task<string> GetCheckInputAsync()
-        {
-            return File.ReadAllTextAsync(@"Day08\input.txt");
-        }
-
         protected override Task<string> GetSampleInputAsync()
         {
             return File.ReadAllTextAsync(@"Day08\sample.txt");

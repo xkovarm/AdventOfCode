@@ -14,11 +14,6 @@
             return Solution2(path);
         }
 
-        protected override Task<string> GetCheckInputAsync()
-        {
-            return File.ReadAllTextAsync(@"Day03\input.txt");
-        }
-
         protected override Task<string> GetSampleInputAsync()
         {
             return Task.FromResult(@"
