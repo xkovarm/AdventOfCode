@@ -31,6 +31,7 @@ namespace AdventOfCode
 
             if (result != SampleResult)
             {
+                Debugger.Break();
                 throw new InvalidOperationException($"Assertion failed! Current result: {result}, expected: {SampleResult}");
             }
         }
