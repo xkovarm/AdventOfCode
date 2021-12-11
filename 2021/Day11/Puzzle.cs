@@ -79,7 +79,16 @@ namespace AdventOfCode.Day11
 
                                     totalFlashes++;
 
-                                    GetNeighbors(x, y, sizeX, sizeY).ForEach(n => pool[n.Y][n.X]++);
+                                    for (int iy = y-1; iy <= y+1; iy++)
+                                    {
+                                        for (int ix = x-1; ix <= x+1; ix++)
+                                        {
+                                            if (ix >= 0 && iy >= 0 && ix < sizeX && iy < sizeY && !(ix == x && iy == y))
+                                            {
+                                                pool[iy][ix]++;
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -97,18 +106,6 @@ namespace AdventOfCode.Day11
 
             // part 1
             return totalFlashes.ToString();
-        }
-
-        private readonly List<(int X, int Y)> Neighbors = new List<(int X, int Y)>
-        {
-            (-1, -1), (-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1)
-        };
-
-        private IEnumerable<(int X, int Y)> GetNeighbors(int x, int y, int sizeX, int sizeY)
-        {
-            var neighbors = Neighbors.Select(n => (X: n.X + x, Y: n.Y + y)).Where(n => n.X >= 0 && n.Y >= 0 && n.X < sizeX && n.Y < sizeY).ToArray();
-
-            return neighbors;
         }
     }
 }
