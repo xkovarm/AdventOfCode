@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
 using AdventOfCode;
 
-var currentDate = DateOnly.FromDateTime(DateTime.UtcNow);
+var currentDay = DateOnly.FromDateTime(DateTime.UtcNow).Day;
 
-Console.WriteLine($"Current day: {currentDate.Day}");
+Console.WriteLine($"Current day: {currentDay}");
 
-var currentType = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.IsSubclassOf(typeof(PuzzleBase)) && (t?.FullName?.Contains($".Day{currentDate.Day:D02}.") ?? false)).FirstOrDefault();
+var currentType = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.IsSubclassOf(typeof(PuzzleBase)) && (t?.FullName?.Contains($".Day{currentDay:D02}.") ?? false)).FirstOrDefault();
 if (currentType == null)
 {
     Console.WriteLine("No calculation found for the current day.");
