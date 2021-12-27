@@ -17,6 +17,7 @@
                 .Select(int.Parse)
                 .GroupBy(i => i)
                 .Select(i => new { i.Key, Count = i.Count() })
+                .ToList()
                 .ForEach(d => aquarium[d.Key] = d.Count);
 
             for (int i = 0; i < days; i++)

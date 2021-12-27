@@ -8,11 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="morelinq" Version="3.3.2" />
     <PackageReference Include="TextCopy" Version="4.3.1" />
 	<Using Include="System.Linq" />
 	<Using Include="System.Diagnostics" />
-	<Using Include="MoreLinq" />
+	<!--<Using Include="MoreLinq" />-->
 	<Using Include="TextCopy" />
   </ItemGroup>
 
@@ -21,6 +20,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Day08\sample.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Day19\sample.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

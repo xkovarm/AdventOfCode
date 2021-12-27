@@ -37,7 +37,7 @@
             bool findFirst = false; // true;
 
             var winningBoards = new Dictionary<int[], bool>();
-            boards.ForEach(b => winningBoards.Add(b, false));
+            boards.ToList().ForEach(b => winningBoards.Add(b, false));
 
             foreach (var number in numbers)
             {

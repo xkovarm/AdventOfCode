@@ -72,7 +72,7 @@ start-RW");
                     .Select(e => $"{item},{e}")
                     .ToArray();
 
-                next.Where(n => CheckPath(n)).ForEach(n =>
+                next.Where(n => CheckPath(n)).ToList().ForEach(n =>
                 {
                     if (n.EndsWith("end"))
                     {

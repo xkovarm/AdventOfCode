@@ -53,6 +53,7 @@
 
                 GetNeighbors(current.X, current.Y)
                     .OrderBy(n => n.Costs)
+                    .ToList()
                     .ForEach(following =>
                     {
                         var followingNode = nodes[following.X, following.Y];

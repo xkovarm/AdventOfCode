@@ -95,7 +95,7 @@ namespace AdventOfCode.Day11
                     }
                 } while (anyFlash);
 
-                flashed.ForEach(f => pool[f.Y][f.X] = 0);
+                flashed.ToList().ForEach(f => pool[f.Y][f.X] = 0);
 
                 if (pool.All(p => p.All(p => p == 0)))
                 {

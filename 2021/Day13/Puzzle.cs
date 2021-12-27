@@ -52,11 +52,11 @@ fold along x=5");
 
             var transformed = new HashSet<(int X, int Y)>();
 
-            folds.ForEach(fold =>
+            folds.ToList().ForEach(fold =>
             {
                 transformed.Clear();
 
-                points.ForEach(point =>
+                points.ToList().ForEach(point =>
                 {
                     if (fold.Axis == "x" && point.X > fold.Position)
                     {
@@ -85,7 +85,7 @@ fold along x=5");
                 var maxY = points.Select(p => p.Y).Max();
 
                 var dump = new char[maxY + 1][];
-                points.ForEach(p => 
+                points.ToList().ForEach(p => 
                 {
                     if (dump[p.Y] == null)
                     {
@@ -94,7 +94,7 @@ fold along x=5");
                     dump[p.Y][p.X] = '#';
                 });
 
-                dump.ForEach(d => Console.WriteLine(new string(d)));
+                dump.ToList().ForEach(d => Console.WriteLine(new string(d)));
             }
         }
     }

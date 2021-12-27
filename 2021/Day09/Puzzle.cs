@@ -58,6 +58,7 @@ namespace AdventOfCode.Day09
 
                         GetNeighbors(current.X, current.Y, sizeX, sizeY)
                             .Where(n => data[n.Y][n.X] < '9' && data[n.Y][n.X] != '#')
+                            .ToList()
                             .ForEach(n =>
                             {
                                 queue.Enqueue(n);

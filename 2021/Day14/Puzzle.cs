@@ -49,7 +49,7 @@ CN -> C");
 
             for (int i = 0; i < generations; i++)
             {
-                currentGeneration.ForEach(r =>
+                currentGeneration.ToList().ForEach(r =>
                 {
                     var pair = r.Key;           // "AB"
                     var rule = rules[pair];     // "C"
@@ -59,7 +59,7 @@ CN -> C");
                 });
 
                 (currentGeneration, nextGeneration) = (nextGeneration, currentGeneration);
-                nextGeneration.Keys.ForEach(k => nextGeneration[k] = 0);
+                nextGeneration.Keys.ToList().ForEach(k => nextGeneration[k] = 0);
             }
 
             var counts = currentGeneration
