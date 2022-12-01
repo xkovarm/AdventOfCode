@@ -4,37 +4,42 @@
     {
         // -- CALCULATION PARAMETERS AND RESULT ------------------------------------
 
-        private const int WindowSize = 3; // part 1: 1;
-
-        protected override string SampleResult => "5";  // part 1: "7";
+        protected override string SampleResult => "45000"; //"24000";  
 
         // -------------------------------------------------------------------------
 
         protected override Task<string> GetSampleInputAsync()
         {
-            return File.ReadAllTextAsync(@"Day01\sample.txt");
+            return Task.FromResult(
+@"1000
+2000
+3000
+
+4000
+
+5000
+6000
+
+7000
+8000
+9000
+
+10000");
         }
 
         protected override string DoCalculation(string input)
         {
-            var values = input.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+            var sums = input
+                .Split($"{Environment.NewLine}{Environment.NewLine}", StringSplitOptions.RemoveEmptyEntries) 
+                .Select(v => 
+                    v.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(int.Parse)
+                    .Sum()
+                )
+                .ToList();
 
-            var result = 0;
-            var previous = -1;
-
-            for (int i = 0; i < values.Length - WindowSize + 1; i++)
-            {
-                var current = values[i..(i + WindowSize)].Sum();
-
-                if (current > previous && previous != -1)
-                {
-                    result++;
-                }
-
-                previous = current;
-            }
-
-            return result.ToString();
+            //return sums.Max().ToString();
+            return sums.OrderByDescending(s => s).Take(3).Sum().ToString();
         }
     }
 }
