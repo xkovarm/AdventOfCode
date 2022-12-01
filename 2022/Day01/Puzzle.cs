@@ -8,25 +8,6 @@
 
         // -------------------------------------------------------------------------
 
-        protected override Task<string> GetSampleInputAsync()
-        {
-            return Task.FromResult(
-@"1000
-2000
-3000
-
-4000
-
-5000
-6000
-
-7000
-8000
-9000
-
-10000");
-        }
-
         protected override string DoCalculation(string input)
         {
             var sums = input
