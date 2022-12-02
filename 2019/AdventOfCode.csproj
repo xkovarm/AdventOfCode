@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
+    <PackageReference Include="morelinq" Version="3.3.2" />
+    <PackageReference Include="TextCopy" Version="6.2.0" />
+	<Using Include="System.Linq" />
+	<Using Include="System.Diagnostics" />
+	<!--<Using Include="MoreLinq" />-->
+	<Using Include="TextCopy" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Day08\sample.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Day19\sample.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
