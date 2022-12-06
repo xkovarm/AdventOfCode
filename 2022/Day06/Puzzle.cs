@@ -16,7 +16,7 @@
 
         private int Calculate(string input, int headerLength)
         {
-            for (int i = 0; i < input.Length - headerLength; i++)
+            for (int i = 0; i < input.Length - headerLength + 1; i++)
             {
                 var distinctLength = input.Skip(i).Take(headerLength).Distinct().Count();
                 
