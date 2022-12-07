@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode.Day07
+﻿using System.Data;
+
+namespace AdventOfCode.Day07
 {
     internal class Puzzle : PuzzleBase
     {
@@ -22,7 +24,7 @@
         {
             public Dir Parent { get; set; }
 
-            public List<Node> Children { get; set; } = new List<Node>();
+            public List<Node> Children { get; } = new();
         }
 
 
@@ -92,22 +94,11 @@ $ ls
 
             return dirs;
 
-            long CalculateStep(Node node)
+            long CalculateStep(Dir dir)
             {
-                if (node is Dir dir)
-                {
-                    var size = dir.Children.Select(CalculateStep).Sum();
-                    dirs.Add((dir, size));
-                    return size;
-                }
-                else if (node is File file)
-                {
-                    return file.Size;
-                }
-                else
-                {
-                    throw new InvalidOperationException();
-                }
+                var size = dir.Children.OfType<Dir>().Sum(CalculateStep) + dir.Children.OfType<File>().Sum(f => f.Size);
+                dirs.Add((dir, size));
+                return size;
             }
         }
 
