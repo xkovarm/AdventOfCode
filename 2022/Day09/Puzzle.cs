@@ -52,7 +52,7 @@ R 2");
                    
                     for (int k = 1; k <= tail; k++)
                     {
-                        if (!IsAdjacent(knots[k-1], knots[k]))
+                        if (!knots[k - 1].IsAdjacent(knots[k]))
                         {
                             knots[k] = MoveFollower(knots[k-1], knots[k]);
                         }
@@ -65,9 +65,7 @@ R 2");
                 }
             }
 
-            return visited.Count();
-
-            bool IsAdjacent(Point leader, Point follower) => leader.X - follower.X <= 1 && leader.X - follower.X >= -1 && leader.Y - follower.Y <= 1 && leader.Y - follower.Y >= -1;
+            return visited.Count();           
 
             Point GetMove(char direction) => direction switch
             {
@@ -97,4 +95,9 @@ file record Point(int X, int Y)
     public static Point Down = new Point(0, 1);
     public static Point Left = new Point(-1, 0);
     public static Point Right = new Point(1, 0);
+
+    public bool IsAdjacent(Point p)
+    {
+        return X - p.X <= 1 && X - p.X >= -1 && Y - p.Y <= 1 && Y - p.Y >= -1;
+    }
 }
