@@ -58,10 +58,7 @@ R 2");
                         }
                     }
 
-                    if (!visited.Contains(knots[tail]))
-                    {
-                        visited.Add(knots[tail]);
-                    }
+                    visited.Add(knots[tail]);
                 }
             }
 
