@@ -27,6 +27,10 @@ namespace AdventOfCode.Day12
                 .OrderBy(n => n.Type)
                 .ToArray();
 
+            // replace the start and end marks by their energy
+            area[important[1].Coord.Y][important[1].Coord.X] = 'a';
+            area[important[0].Coord.Y][important[0].Coord.X] = 'z';
+
             // PART 1: var starts = new[] { important[1] };
             var starts = important[1..];
 
@@ -87,32 +91,23 @@ namespace AdventOfCode.Day12
 
             IEnumerable<(int X, int Y, char Energy)> GetNeighbors(int x, int y)
             {
-                var energy = GetEnergy(x, y);
-
-                if (x > 0 && GetEnergy(x - 1, y) <= energy + 1)
+                if (x > 0 && area[y][x - 1] <= area[y][x] + 1)
                 {
-                    yield return (x - 1, y, GetEnergy(x - 1, y));
+                    yield return (x - 1, y, area[y][x-1]);
                 }
-                if (y > 0 && GetEnergy(x, y - 1) <= energy + 1)
+                if (y > 0 && area[y - 1][x] <= area[y][x] + 1)
                 {
-                    yield return (x, y - 1, GetEnergy(x, y - 1));
+                    yield return (x, y - 1, area[y - 1][x]);
                 }
-                if (x < maxX - 1 && GetEnergy(x + 1, y) <= energy + 1)
+                if (x < maxX - 1 && area[y][x + 1] <= area[y][x] + 1)
                 {
-                    yield return (x + 1, y, GetEnergy(x + 1, y));
+                    yield return (x + 1, y, area[y][x + 1]);
                 }
-                if (y < maxY - 1 && GetEnergy(x, y + 1) <= energy + 1)
+                if (y < maxY - 1 && area[y + 1][x] <= area[y][x] + 1)
                 {
-                    yield return (x, y + 1, GetEnergy(x, y + 1));
+                    yield return (x, y + 1, area[y + 1][x]);
                 }
             }
-
-            char GetEnergy(int x, int y) => area[y][x] switch
-            {
-                'S' => 'a',
-                'E' => 'z',
-                var ch => ch
-            };
         }
 
         private class Node
