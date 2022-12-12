@@ -22,9 +22,9 @@ namespace AdventOfCode.Day12
 
             var important = Enumerable.Range(0, maxY)
                 .SelectMany(row => Enumerable.Range(0, maxX).Select(col => (X: col, Y: row)))
-                .Where(a => area[a.Y][a.X] is 'S' or 'E' or 'a')
-                .Select(n => new { Type = area[n.Y][n.X] switch { 'E' => 0, 'S' => 1, 'a' => 2 }, Coord = (n.X, n.Y) })
-                .OrderBy(n => n.Type)
+                .Where(c => area[c.Y][c.X] is 'S' or 'E' or 'a')
+                .Select(c => new { Type = area[c.Y][c.X] switch { 'E' => 0, 'S' => 1, 'a' => 2 }, Coord = c })
+                .OrderBy(c => c.Type)
                 .ToArray();
 
             // replace the start and end marks by their energy
