@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Net;
+using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 
 namespace AdventOfCode
@@ -39,7 +40,7 @@ namespace AdventOfCode
 
                     var node = doc.DocumentNode.SelectSingleNode("//pre/code");
 
-                    return node.InnerText;
+                    return WebUtility.HtmlDecode(node.InnerText);
                 });
         }
 
