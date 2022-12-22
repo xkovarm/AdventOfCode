@@ -128,24 +128,24 @@ namespace AdventOfCode.Day22
         {
             var tile = Array.IndexOf(Tiles.Select(t => IsInTile(current, t)).ToArray(), true);
 
-            switch (tile, facing)
+            return (tile, facing) switch
             {
-                case (0, DirUp): return (new Point(1, current.X + 100), DirRight);
-                case (0, DirLeft): return (new Point(1, 151 - current.Y), DirRight);
-                case (1, DirUp): return (new Point(current.X - 100, 200), DirUp);
-                case (1, DirRight): return (new Point(100, 151 - current.Y), DirLeft);
-                case (1, DirDown): return (new Point(100, current.X - 50), DirLeft);
-                case (2, DirLeft): return (new Point(current.Y - 50, 101), DirDown);
-                case (2, DirRight): return (new Point(current.Y + 50, 50), DirUp);
-                case (4, DirLeft): return (new Point(51, 151 - current.Y), DirRight);
-                case (4, DirUp): return (new Point(51, current.X + 50), DirRight);
-                case (5, DirLeft): return (new Point(current.Y - 100, 1), DirDown);
-                case (5, DirDown): return (new Point(current.X + 100, 1), DirDown);
-                case (5, DirRight): return (new Point(current.Y - 100, 150), DirUp);
-                case (3, DirDown): return (new Point(50, current.X + 100), DirLeft);
-                case (3, DirRight): return (new Point(150, 151 - current.Y), DirLeft);
-                default: throw new InvalidOperationException();
-            }
+                (0, DirUp) => (new Point(1, current.X + 100), DirRight),
+                (0, DirLeft) => (new Point(1, 151 - current.Y), DirRight),
+                (1, DirUp) => (new Point(current.X - 100, 200), DirUp),
+                (1, DirRight) => (new Point(100, 151 - current.Y), DirLeft),
+                (1, DirDown) => (new Point(100, current.X - 50), DirLeft),
+                (2, DirLeft) => (new Point(current.Y - 50, 101), DirDown),
+                (2, DirRight) => (new Point(current.Y + 50, 50), DirUp),
+                (4, DirLeft) => (new Point(51, 151 - current.Y), DirRight),
+                (4, DirUp) => (new Point(51, current.X + 50), DirRight),
+                (5, DirLeft) => (new Point(current.Y - 100, 1), DirDown),
+                (5, DirDown) => (new Point(current.X + 100, 1), DirDown),
+                (5, DirRight) => (new Point(current.Y - 100, 150), DirUp),
+                (3, DirDown) => (new Point(50, current.X + 100), DirLeft),
+                (3, DirRight) => (new Point(150, 151 - current.Y), DirLeft),
+                _ => throw new InvalidOperationException()
+            };
         }
 
         private bool IsInTile(Point pos, Point tileCorner)
