@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.4.0" />
     <PackageReference Include="morelinq" Version="3.3.2" />
     <PackageReference Include="TextCopy" Version="6.2.0" />
 	<Using Include="System.Linq" />
