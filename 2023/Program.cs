@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using AdventOfCode;
 
-var currentDay = 1;// DateOnly.FromDateTime(DateTime.UtcNow).Day;
+var currentDay = DateOnly.FromDateTime(DateTime.UtcNow).Day;
 
 Console.WriteLine($"Current day: {currentDay}");
 
